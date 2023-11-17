@@ -1,10 +1,11 @@
 def print_table(table):
+    # Finds max width of each column
     col_width = [0] * len(table)
     for i in range(len(table)):
-        current_col = table[i]
-        for data in current_col:
-            if col_width[i] < len(data):
-                col_width[i] = len(data)
+        for j in range(len(table[i])):
+            col_width[j] = max(col_width[j], len(table[i][j]))
+
+    # Prints the table
     for i in range(len(table[0])):
         for j in range(len(table)):
             print(table[j][i].rjust(col_width[j] + 1), end=' ')
